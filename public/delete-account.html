@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Primary SEO -->
+    <title>Delete Your Account – Oye Ride</title>
+    <meta name="description" content="Request deletion of your Oye Ride account and all associated data. We respect your privacy and will process your request promptly." />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#004AAD" />
+    <link rel="canonical" href="https://oye-official.web.app/delete-account" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://oye-official.web.app/delete-account" />
+    <meta property="og:title" content="Delete Your Account – Oye Ride" />
+    <meta property="og:description" content="Request deletion of your Oye Ride account and associated data. We'll process your request within 30 days." />
+    <meta property="og:image" content="https://oye-official.web.app/img2.jpg" />
+    <meta property="og:locale" content="en_GH" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Delete Your Account – Oye Ride" />
+    <meta name="twitter:description" content="Request deletion of your Oye Ride account and all associated data." />
+    <meta name="twitter:image" content="https://oye-official.web.app/img2.jpg" />
+
+    <!-- Fonts & Tailwind -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js">
+    </script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js">
+    </script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-functions-compat.js">
+    </script>
+
+    <style>
+        :root {
+            --blue: #004AAD;
+            --blue-dark: #003380;
+            --blue-light: #0066E0;
+            --orange: #FF8C00;
+            --orange-light: #FFA833;
+            --orange-dark: #E67A00;
+            --purple: #6C3CE0;
+            --teal: #00C9A7;
+        }
+
+        * {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            background-color: #f8fafc;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        .display-font {
+            font-family: 'Outfit', 'Inter', sans-serif;
+            letter-spacing: -0.02em;
+        }
+
+        /* Gradients */
+        .gradient-blue {
+            background: linear-gradient(135deg, #004AAD 0%, #0066E0 50%, #004AAD 100%);
+        }
+        .gradient-orange {
+            background: linear-gradient(135deg, #FF8C00 0%, #FFA833 50%, #FF6B00 100%);
+        }
+        .gradient-hero {
+            background: linear-gradient(160deg, #003380 0%, #004AAD 30%, #0056CC 60%, #003d91 100%);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #FF8C00, #FF6B00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .gradient-text2 {
+            background: linear-gradient(135deg, #ff9f2b, #ff9244);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .gradient-text-blue {
+            background: linear-gradient(135deg, #004AAD, #0066E0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Glass effect */
+        .glass {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        .glass-dark {
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        /* Buttons */
+        .btn-primary {
+            background: linear-gradient(135deg, #FF8C00, #FF6B00);
+            color: white;
+            font-weight: 600;
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 20px rgba(255, 140, 0, 0.35);
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-primary::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, #FFA833, #FF8C00);
+            opacity: 0;
+            transition: opacity 0.35s ease;
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(255, 140, 0, 0.5);
+        }
+        .btn-primary:hover::after {
+            opacity: 1;
+        }
+        .btn-primary span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-outline-light {
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            color: white;
+            font-weight: 600;
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .btn-outline-light:hover {
+            border-color: white;
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-danger {
+            background: linear-gradient(135deg, #DC2626, #B91C1C);
+            color: white;
+            font-weight: 600;
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 20px rgba(220, 38, 38, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-danger::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, #EF4444, #DC2626);
+            opacity: 0;
+            transition: opacity 0.35s ease;
+        }
+        .btn-danger:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(220, 38, 38, 0.45);
+        }
+        .btn-danger:hover::after {
+            opacity: 1;
+        }
+        .btn-danger span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-outline-dark {
+            border: 2px solid #d1d5db;
+            color: #374151;
+            font-weight: 600;
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            background: white;
+        }
+        .btn-outline-dark:hover {
+            border-color: #004AAD;
+            color: #004AAD;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Cards */
+        .card-modern {
+            background: white;
+            border-radius: 1.5rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+        }
+        .card-modern:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+            border-color: rgba(0, 74, 173, 0.15);
+        }
+
+        /* Reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Badge */
+        .badge-modern {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: linear-gradient(135deg, rgba(0, 74, 173, 0.08), rgba(108, 60, 224, 0.06));
+            border: 1px solid rgba(0, 74, 173, 0.18);
+            color: #004AAD;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            padding: 0.4rem 1rem;
+            border-radius: 999px;
+        }
+        .badge-modern i {
+            font-size: 0.65rem;
+            color: #FF8C00;
+        }
+
+        /* Hero clip */
+        .hero-clip {
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+        @media (max-width: 768px) {
+            .hero-clip {
+                clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
+            }
+        }
+
+        /* Noise overlay */
+        .noise-overlay {
+            position: relative;
+        }
+        .noise-overlay::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            opacity: 0.015;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Step indicator */
+        .step-dot {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        /* Modal overlay */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .modal-box {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25);
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+        .modal-overlay.active .modal-box {
+            transform: translateY(0);
+        }
+
+        /* Spinner */
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        .spinner {
+            animation: spin 0.8s linear infinite;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- ═══════════════════════ NAVIGATION ═══════════════════════ -->
+    <nav class="fixed w-full z-50 transition-all duration-400 shadow-2xl" id="navbar">
+        <div class="absolute inset-0" id="nav-bg" style="background: rgba(0,58,140,0.94); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex justify-between h-20 items-center">
+                <a href="/" class="text-4xl font-extrabold tracking-tight display-font flex items-center gap-1">
+                    <span class="text-white">Oye</span><span class="gradient-text2">Ride</span>
+                </a>
+                <div class="hidden lg:flex items-center gap-1 font-medium text-sm">
+                    <a href="/#services" class="px-4 py-2 rounded-full text-white/80 hover:text-white hover:bg-white/10 transition-all duration-300">Services</a>
+                    <a href="/#how-it-works" class="px-4 py-2 rounded-full text-white/80 hover:text-white hover:bg-white/10 transition-all duration-300">How It Works</a>
+                    <a href="/#about" class="px-4 py-2 rounded-full text-white/80 hover:text-white hover:bg-white/10 transition-all duration-300">About</a>
+                    <a href="/#faq" class="px-4 py-2 rounded-full text-white/80 hover:text-white hover:bg-white/10 transition-all duration-300">FAQ</a>
+                    <a href="/"
+                    class="ml-2 px-6 py-2.5 rounded-full font-semibold btn-primary text-sm">
+                    <span>← Back to Home</span>
+                    </a>
+                </div>
+                <button class="lg:hidden text-white text-2xl p-2 rounded-xl hover:bg-white/10 transition-colors" id="menu-toggle" aria-label="Open menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="lg:hidden hidden glass border-t border-white/15 px-6 py-5 space-y-1 relative z-10">
+            <a href="/#services" class="block py-3 px-4 rounded-xl text-white/85 hover:text-white hover:bg-white/10 transition-all">Services</a>
+            <a href="/#how-it-works" class="block py-3 px-4 rounded-xl text-white/85 hover:text-white hover:bg-white/10 transition-all">How It Works</a>
+            <a href="/#about" class="block py-3 px-4 rounded-xl text-white/85 hover:text-white hover:bg-white/10 transition-all">About</a>
+            <a href="/#faq" class="block py-3 px-4 rounded-xl text-white/85 hover:text-white hover:bg-white/10 transition-all">FAQ</a>
+            <a href="/" class="block mt-2 text-center bg-gradient-to-r from-orange-500 to-orange-600 text-white py-3.5 rounded-xl font-semibold shadow-lg">← Back to Home</a>
+        </div>
+    </nav>
+
+    <!-- ═══════════════════════ HERO ═══════════════════════ -->
+    <header class="relative gradient-hero text-white pt-32 pb-44 hero-clip overflow-hidden noise-overlay">
+        <div class="absolute inset-0 overflow-hidden pointer-events-none">
+            <div class="absolute top-20 right-10 w-80 h-80 rounded-full bg-white/4" style="animation: float-slow 8s ease-in-out infinite;"></div>
+            <div class="absolute bottom-40 left-5 w-64 h-64 rounded-full bg-red-500/8" style="animation: float 6s ease-in-out infinite; animation-delay: 2s;"></div>
+            <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle, white 1px, transparent 1px); background-size: 32px 32px;"></div>
+        </div>
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <div class="inline-flex items-center gap-2 glass rounded-full px-4 py-2 mb-7 text-sm font-medium text-white/90">
+                <i class="fa-solid fa-shield-halved text-orange-400"></i> Privacy &amp; Data Control
+            </div>
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-semibold leading-tight mb-6 display-font tracking-tight">
+                Delete Your <span class="gradient-text">Account</span>
+            </h1>
+            <p class="text-lg text-blue-100 mb-4 max-w-2xl mx-auto leading-relaxed font-light">
+                We're sorry to see you go. You can request full deletion of your Oye Ride account and all associated personal data. We'll process your request promptly and confirm once it's complete.
+            </p>
+            <p class="text-sm text-blue-200/70 max-w-xl mx-auto">
+                This page complies with Google Play's account deletion requirements and GDPR Article&nbsp;17 (Right to Erasure).
+            </p>
+        </div>
+    </header>
+
+    <!-- ═══════════════════════ MAIN CONTENT ═══════════════════════ -->
+    <main class="relative z-10 -mt-16 pb-16">
+
+        <!-- Two Options -->
+        <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Option 1: Delete from App -->
+                <div class="card-modern p-8 reveal">
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 text-xl">
+                            <i class="fa-solid fa-mobile-screen-button"></i>
+                        </div>
+                        <h2 class="text-xl font-semibold display-font text-gray-800">Delete from the App</h2>
+                    </div>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-6">
+                        If you still have the Oye Ride app installed, the fastest way is to delete your account directly from within the app.
+                    </p>
+                    <ol class="space-y-3 text-sm text-gray-600 mb-6">
+                        <li class="flex items-start gap-3">
+                            <span class="step-dot bg-blue-100 text-blue-600" style="width:28px;height:28px;font-size:0.75rem;flex-shrink:0;">1</span>
+                            <span>Open the Oye Ride app and sign in</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="step-dot bg-blue-100 text-blue-600" style="width:28px;height:28px;font-size:0.75rem;flex-shrink:0;">2</span>
+                            <span>Go to <strong>Profile</strong> → <strong>Settings</strong> → <strong>Account</strong></span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="step-dot bg-blue-100 text-blue-600" style="width:28px;height:28px;font-size:0.75rem;flex-shrink:0;">3</span>
+                            <span>Tap <strong>"Delete Account"</strong> and confirm</span>
+                        </li>
+                    </ol>
+                    <div class="bg-blue-50 rounded-xl p-4 text-sm text-blue-700 flex items-start gap-3">
+                        <i class="fa-solid fa-circle-info mt-0.5 flex-shrink-0"></i>
+                        <p>Your data will be removed from Firebase Authentication, Firestore, and all associated services within 7&nbsp;days.</p>
+                    </div>
+                </div>
+
+                <!-- Option 2: Request via Email -->
+                <div class="card-modern p-8 reveal border-2 border-orange-200" style="transition-delay:.1s">
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="w-12 h-12 rounded-xl bg-orange-50 flex items-center justify-center text-orange-500 text-xl">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <h2 class="text-xl font-semibold display-font text-gray-800">Request via Email</h2>
+                    </div>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-6">
+                        Don't have the app anymore? Send us a deletion request from the email address linked to your Oye Ride account.
+                    </p>
+                    <a href="mailto:oyeride01@gmail.com?subject=Account%20Deletion%20Request%20%E2%80%93%20Oye%20Ride&body=Hello%20Oye%20Ride%20Team%2C%0A%0AI%20would%20like%20to%20request%20the%20deletion%20of%20my%20Oye%20Ride%20account%20and%20all%20associated%20personal%20data.%0A%0APlease%20find%20my%20account%20details%20below%3A%0A-%20Full%20Name%3A%20%5Bplease%20fill%20in%5D%0A-%20Email%20address%20linked%20to%20account%3A%20%5Bplease%20fill%20in%5D%0A-%20Phone%20number%20(optional)%3A%20%5Bplease%20fill%20in%5D%0A%0AI%20understand%20that%20this%20action%20is%20irreversible%20and%20my%20data%20will%20be%20permanently%20deleted.%0A%0AThank%20you.%0A%0A%E2%80%94%20Sent%20via%20Oye%20Ride%20Account%20Deletion%20Page"
+                    class="btn-danger w-full py-4 rounded-2xl text-base flex items-center justify-center gap-3 mb-4">
+                    <span class="flex items-center gap-3"><i class="fa-solid fa-paper-plane"></i> Send Deletion Email</span>
+                    </a>
+                    <p class="text-xs text-gray-400 text-center">Opens your email client with a pre-filled message</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- What Gets Deleted -->
+        <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+            <div class="text-center mb-10 reveal">
+                <span class="badge-modern"><i class="fa-solid fa-database"></i> Data Scope</span>
+                <h2 class="text-3xl md:text-4xl font-semibold text-gray-900 mt-5 display-font">What We Delete</h2>
+                <p class="text-gray-500 mt-3 text-lg max-w-xl mx-auto">Here's exactly what gets removed when you delete your account.</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                <div class="card-modern p-6 reveal text-center">
+                    <div class="w-14 h-14 rounded-2xl bg-red-50 flex items-center justify-center text-red-500 text-xl mx-auto mb-4">
+                        <i class="fa-solid fa-user-large-slash"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 mb-2 display-font">Account Profile</h3>
+                    <p class="text-gray-500 text-sm">Name, email, phone number, password, and all profile fields — deleted from Firebase&nbsp;Auth.</p>
+                </div>
+                <div class="card-modern p-6 reveal text-center" style="transition-delay:.08s">
+                    <div class="w-14 h-14 rounded-2xl bg-red-50 flex items-center justify-center text-red-500 text-xl mx-auto mb-4">
+                        <i class="fa-solid fa-clock-rotate-left"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 mb-2 display-font">Trip History</h3>
+                    <p class="text-gray-500 text-sm">All ride and delivery records, pickup/drop-off addresses, and route data — removed from Firestore.</p>
+                </div>
+                <!-- <div class="card-modern p-6 reveal text-center" style="transition-delay:.16s">
+                    <div class="w-14 h-14 rounded-2xl bg-red-50 flex items-center justify-center text-red-500 text-xl mx-auto mb-4">
+                        <i class="fa-solid fa-credit-card"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 mb-2 display-font">Payment Records</h3>
+                    <p class="text-gray-500 text-sm">Transaction history and payment method references — deleted from our database.</p>
+                </div> -->
+                <div class="card-modern p-6 reveal text-center" style="transition-delay:.24s">
+                    <div class="w-14 h-14 rounded-2xl bg-red-50 flex items-center justify-center text-red-500 text-xl mx-auto mb-4">
+                        <i class="fa-solid fa-bell"></i>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 mb-2 display-font">Device &amp; Tokens</h3>
+                    <p class="text-gray-500 text-sm">Push notification tokens, device info, and session data — fully wiped.</p>
+                </div>
+            </div>
+
+            <!-- What's retained -->
+            <div class="card-modern p-6 mt-8 reveal bg-amber-50/60 border border-amber-200" style="transition-delay:.3s">
+                <div class="flex items-start gap-3">
+                    <i class="fa-solid fa-triangle-exclamation text-amber-500 text-lg mt-0.5 flex-shrink-0"></i>
+                    <div>
+                        <h3 class="font-semibold text-gray-800 mb-2 display-font">What May Be Retained (Legally Required)</h3>
+                        <ul class="text-sm text-gray-600 space-y-1.5 list-disc pl-5">
+                            <!-- <li><strong>Transaction logs</strong> required for tax &amp; accounting purposes (retained up to 6 years per Ghana Revenue Authority guidelines, with personal identifiers removed).</li> -->
+                            <li><strong>Legal dispute records</strong> — if your account is involved in an ongoing investigation or dispute, data may be retained until resolution.</li>
+                            <li><strong>Anonymized analytics</strong> — aggregated, non-personal data that cannot be linked back to you.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Timeline -->
+        <section class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 reveal">
+            <div class="card-modern p-8">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">
+                        <i class="fa-solid fa-calendar-check"></i>
+                    </div>
+                    <h2 class="text-xl font-semibold display-font text-gray-800">Deletion Timeline</h2>
+                </div>
+                <div class="space-y-5 relative pl-8 border-l-2 border-blue-100">
+                    <div class="relative">
+                        <div class="absolute -left-[2.15rem] top-1 w-3.5 h-3.5 rounded-full bg-blue-500 ring-4 ring-blue-50"></div>
+                        <p class="font-semibold text-gray-800">Day 0 – Request Received</p>
+                        <p class="text-sm text-gray-500 mt-1">We acknowledge your deletion request via email within 24 hours.</p>
+                    </div>
+                    <div class="relative">
+                        <div class="absolute -left-[2.15rem] top-1 w-3.5 h-3.5 rounded-full bg-blue-400 ring-4 ring-blue-50"></div>
+                        <p class="font-semibold text-gray-800">Within 7 Days – Data Erased</p>
+                        <p class="text-sm text-gray-500 mt-1">Your Firebase Auth account, Firestore documents, and all linked data are permanently deleted.</p>
+                    </div>
+                    <div class="relative">
+                        <div class="absolute -left-[2.15rem] top-1 w-3.5 h-3.5 rounded-full bg-green-500 ring-4 ring-green-50"></div>
+                        <p class="font-semibold text-gray-800">Day 7 – Confirmation Sent</p>
+                        <p class="text-sm text-gray-500 mt-1">You receive a final confirmation email that your data has been erased.</p>
+                    </div>
+                </div>
+                <p class="text-xs text-gray-400 mt-6">Under GDPR, we have up to 30 days to comply. We aim to complete all deletions within 7&nbsp;days.</p>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 reveal">
+            <div class="text-center mb-8">
+                <span class="badge-modern"><i class="fa-solid fa-circle-question"></i> Common Questions</span>
+                <h2 class="text-3xl font-semibold text-gray-900 mt-5 display-font">Account Deletion FAQ</h2>
+            </div>
+            <div class="space-y-3" id="faq-list">
+                <!-- Populated by JS -->
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal">
+            <div class="card-modern p-10 bg-gradient-to-br from-gray-50 to-white">
+                <div class="text-4xl mb-4">🤝</div>
+                <h2 class="text-2xl font-semibold text-gray-800 display-font mb-3">Changed Your Mind?</h2>
+                <p class="text-gray-500 mb-6 max-w-md mx-auto">If you have feedback or an issue we can fix, we'd love to hear from you before you go.</p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="mailto:support@oye-official.web.app?subject=Feedback%20Before%20Account%20Deletion"
+                    class="btn-outline-dark px-6 py-3 rounded-2xl text-sm flex items-center gap-2">
+                    <i class="fa-solid fa-comment-dots"></i> Share Feedback
+                    </a>
+                    <a href="mailto:oyeride01@gmail.com?subject=Account%20Deletion%20Request%20%E2%80%93%20Oye%20Ride&body=Hello%20Oye%20Ride%20Team%2C%0A%0AI%20would%20like%20to%20request%20the%20deletion%20of%20my%20Oye%20Ride%20account%20and%20all%20associated%20personal%20data.%0A%0APlease%20find%20my%20account%20details%20below%3A%0A-%20Full%20Name%3A%20%5Bplease%20fill%20in%5D%0A-%20Email%20address%20linked%20to%20account%3A%20%5Bplease%20fill%20in%5D%0A-%20Phone%20number%20(optional)%3A%20%5Bplease%20fill%20in%5D%0A%0AI%20understand%20that%20this%20action%20is%20irreversible%20and%20my%20data%20will%20be%20permanently%20deleted.%0A%0AThank%20you.%0A%0A%E2%80%94%20Sent%20via%20Oye%20Ride%20Account%20Deletion%20Page"
+                    class="btn-danger px-6 py-3 rounded-2xl text-sm flex items-center gap-2">
+                    <span><i class="fa-solid fa-trash-can"></i> Yes, Delete My Account</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+    <footer class="bg-white border-t border-gray-100 py-16" role="contentinfo">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+                <div class="md:col-span-2">
+                    <div class="text-3xl font-semibold display-font mb-3">
+                        <span class="text-blue-600">Oye</span><span class="text-orange-500">Ride</span>
+                    </div>
+                    <p class="text-gray-500 text-sm leading-relaxed max-w-xs">
+                        Fast motor rides and reliable deliveries in Kasoa, Ghana. Move Faster. Deliver Smarter.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-gray-800 mb-4 display-font">Services</h3>
+                    <ul class="space-y-2.5 text-sm text-gray-500">
+                        <li><a href="/#services" class="hover:text-blue-600 transition-colors">Oye Motor Ride</a></li>
+                        <li><a href="/#services" class="hover:text-blue-600 transition-colors">Oye Motor Delivery</a></li>
+                        <li><a href="/#services" class="hover:text-blue-600 transition-colors">Oye Bicycle Delivery</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-gray-800 mb-4 display-font">Company</h3>
+                    <ul class="space-y-2.5 text-sm text-gray-500">
+                        <li><a href="/#about" class="hover:text-blue-600 transition-colors">About Us</a></li>
+                        <li><a href="https://oye-riders.web.app/signup" target="_blank" rel="noopener" class="hover:text-blue-600 transition-colors">Become a Driver</a></li>
+                        <li><a href="/privacy.html" class="hover:text-blue-600 transition-colors">Privacy Policy</a></li>
+                        <li><a href="/delete-account.html" class="text-orange-500 font-medium">Delete Account</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-100 pt-7 text-center text-gray-400 text-sm">
+                &copy; 2026 Oye Ride Hailing Service, Kasoa, Ghana. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- ═══════════════════════ CONFIRMATION MODAL ═══════════════════════ -->
+    <div class="modal-overlay" id="confirm-modal">
+        <div class="modal-box text-center">
+            <div class="text-5xl mb-4">⚠️</div>
+            <h3 class="text-xl font-semibold text-gray-800 display-font mb-2">Are You Absolutely Sure?</h3>
+            <p class="text-gray-500 text-sm mb-6">
+                This action is <strong>irreversible</strong>. All your data — trip history, and account details — will be permanently deleted within 7&nbsp;days.
+            </p>
+            <div class="flex gap-3 justify-center">
+                <button class="btn-outline-dark px-6 py-3 rounded-2xl text-sm" onclick="closeModal()">
+                    Cancel
+                </button>
+                <a href="mailto:oyeride01@gmail.com?subject=Account%20Deletion%20Request%20%E2%80%93%20Oye%20Ride&body=Hello%20Oye%20Ride%20Team%2C%0A%0AI%20would%20like%20to%20request%20the%20deletion%20of%20my%20Oye%20Ride%20account%20and%20all%20associated%20personal%20data.%0A%0APlease%20find%20my%20account%20details%20below%3A%0A-%20Full%20Name%3A%20%5Bplease%20fill%20in%5D%0A-%20Email%20address%20linked%20to%20account%3A%20%5Bplease%20fill%20in%5D%0A-%20Phone%20number%20(optional)%3A%20%5Bplease%20fill%20in%5D%0A%0AI%20understand%20that%20this%20action%20is%20irreversible%20and%20my%20data%20will%20be%20permanently%20deleted.%0A%0AThank%20you.%0A%0A%E2%80%94%20Sent%20via%20Oye%20Ride%20Account%20Deletion%20Page"
+                class="btn-danger px-6 py-3 rounded-2xl text-sm flex items-center gap-2">
+                <span><i class="fa-solid fa-check"></i> I Understand, Proceed</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════ SCRIPTS ═══════════════════════ -->
+    <script>
+        // Mobile menu
+        const toggle = document.getElementById('menu-toggle');
+        const menu = document.getElementById('mobile-menu');
+        if (toggle && menu) {
+            toggle.addEventListener('click', () => menu.classList.toggle('hidden'));
+            menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.add('hidden')));
+        }
+
+        // Reveal on scroll
+        const revealEls = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('visible');
+                    observer.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+        revealEls.forEach(el => observer.observe(el));
+
+        // FAQ accordion for deletion page
+        const deletionFaqs = [
+            {
+                q: "How do I know my deletion request was received?",
+                a: "You will receive an acknowledgment email within 24 hours of submitting your request. If you don't see it, check your spam folder or contact us at <strong>oyeride01@gmail.com</strong>."
+            },
+            {
+                q: "Can I recover my account after deletion?",
+                a: "No. Account deletion is permanent and irreversible. Once your data is erased, you would need to create a brand-new account if you wish to use Oye Ride again."
+            },
+            {
+                q: "What if I signed up with Google or Facebook?",
+                a: "Even if you used a social login, your Oye Ride account data is still stored in our Firebase backend. The deletion process is the same — we remove all your data from our systems. You may also want to revoke Oye Ride's access in your Google or Facebook account settings."
+            },
+            {
+                q: "Will my rider/driver rating data be deleted too?",
+                a: "Yes. All personally identifiable data including your ratings, reviews, and feedback is deleted. Anonymized aggregate ratings (e.g., overall driver score) may be retained as they cannot be linked back to you."
+            },
+            {
+                q: "How long does it take to fully delete my data?",
+                a: "We complete deletion within 7 days. Firebase Authentication accounts are removed immediately. Firestore documents are hard-deleted. Backups cycle out within 30 days."
+            },
+            {
+                q: "Do I need to verify my identity?",
+                a: "If you send the request from the email address linked to your Oye Ride account, that usually suffices. For additional security, we may ask for a confirmation code sent to your phone number on file."
+            },
+        ];
+
+        const faqList = document.getElementById('faq-list');
+        if (faqList) {
+            deletionFaqs.forEach((item, i) => {
+                const el = document.createElement('div');
+                el.className =
+                    'faq-item bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-sm hover:shadow-md transition-shadow reveal';
+                el.style.transitionDelay = `${i * 0.05}s`;
+                el.innerHTML = `
+                  <button class="w-full flex justify-between items-center px-6 py-5 text-left font-semibold text-gray-800 hover:text-blue-600 transition-colors" aria-expanded="false">
+                    <span class="pr-4">${item.q}</span>
+                    <i class="fa-solid fa-plus faq-icon ml-auto flex-shrink-0 w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-blue-600 text-xs transition-all duration-300"></i>
+                  </button>
+                  <div class="faq-answer px-6 text-gray-500 text-sm leading-relaxed" style="max-height:0;overflow:hidden;transition:max-height 0.45s cubic-bezier(0.4,0,0.2,1),padding 0.3s ease;">
+                    <p class="pb-5">${item.a}</p>
+                  </div>`;
+                el.querySelector('button').addEventListener('click', () => {
+                    const isOpen = el.classList.contains('open');
+                    // Close all
+                    document.querySelectorAll('#faq-list .faq-item').forEach(f => {
+                        f.classList.remove('open');
+                        const icon = f.querySelector('.faq-icon');
+                        if (icon) {
+                            icon.style.transform = 'rotate(0deg)';
+                            icon.style.background = '#f1f5f9';
+                            icon.style.color = '#004AAD';
+                        }
+                    });
+                    if (!isOpen) {
+                        el.classList.add('open');
+                        const icon = el.querySelector('.faq-icon');
+                        if (icon) {
+                            icon.style.transform = 'rotate(45deg)';
+                            icon.style.background = '#004AAD';
+                            icon.style.color = 'white';
+                        }
+                    }
+                });
+                faqList.appendChild(el);
+                // Re-observe
+                observer.observe(el);
+            });
+        }
+
+        // Modal functions
+        function openModal() {
+            document.getElementById('confirm-modal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('confirm-modal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        // Close modal on backdrop click
+        document.getElementById('confirm-modal').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+        // Close modal on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        // Attach modal to all danger buttons (except the one inside modal itself)
+        document.querySelectorAll('.btn-danger').forEach(btn => {
+            if (!btn.closest('.modal-box')) {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const href = this.getAttribute('href');
+                    // Store href for later
+                    this.setAttribute('data-href', href);
+                    openModal();
+                });
+            }
+        });
+        // Override the modal's proceed button to use the stored href
+        const modalProceedBtn = document.querySelector('#confirm-modal .btn-danger');
+        if (modalProceedBtn) {
+            modalProceedBtn.addEventListener('click', function(e) {
+                // Find the original trigger button's href
+                const originalBtn = document.querySelector(
+                    '.btn-danger[data-href]:not(#confirm-modal .btn-danger)');
+                if (originalBtn) {
+                    const href = originalBtn.getAttribute('data-href');
+                    if (href && href.startsWith('mailto:')) {
+                        window.location.href = href;
+                    }
+                }
+                closeModal();
+            });
+        }
+
+        // =====================================================
+        // FIREBASE INTEGRATION (Optional – Configure & Uncomment)
+        // =====================================================
+        /*
+        // Replace with your actual Firebase config from the Firebase Console
+        const firebaseConfig = {
+          apiKey: "YOUR_API_KEY",
+          authDomain: "oye-official.firebaseapp.com",
+          projectId: "oye-official",
+          storageBucket: "oye-official.appspot.com",
+          messagingSenderId: "YOUR_SENDER_ID",
+          appId: "YOUR_APP_ID"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+
+        // Function to delete account via Firebase (requires user to be signed in)
+        async function deleteAccountViaFirebase() {
+          const user = auth.currentUser;
+          if (!user) {
+            alert("Please sign in first to delete your account.");
+            return;
+          }
+          try {
+            // Call a Cloud Function to clean up Firestore data
+            const deleteUserData = firebase.functions().httpsCallable('deleteUserData');
+            await deleteUserData();
+
+            // Delete the Firebase Auth account
+            await user.delete();
+
+            alert("Your account has been deleted successfully.");
+            window.location.href = "/";
+          } catch (error) {
+            console.error("Deletion error:", error);
+            if (error.code === 'auth/requires-recent-login') {
+              alert("For security, please sign out and sign in again before deleting your account.");
+            } else {
+              alert("Something went wrong. Please email oyeride01@gmail.com for assistance.");
+            }
+          }
+        }
+
+        // Example Cloud Function (deploy to Firebase Functions):
+        //
+        // const functions = require('firebase-functions');
+        // const admin = require('firebase-admin');
+        // admin.initializeApp();
+        //
+        // exports.deleteUserData = functions.https.onCall(async (data, context) => {
+        //   const uid = context.auth.uid;
+        //   const db = admin.firestore();
+        //   // Delete user document
+        //   await db.collection('users').doc(uid).delete();
+        //   // Delete user's trips subcollection
+        //   const trips = await db.collection('users').doc(uid).collection('trips').get();
+        //   const batch = db.batch();
+        //   trips.forEach(doc => batch.delete(doc.ref));
+        //   await batch.commit();
+        //   return { success: true };
+        // });
+        */
+
+        console.log('Oye Ride Account Deletion Page – Ready');
+        console.log('Email-based deletion: ✅ Active');
+        console.log('Firebase automated deletion: ⚠️ Configure firebaseConfig above to enable');
+    </script>
+</body>
+</html>

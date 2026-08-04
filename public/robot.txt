@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://oye-official.web.app/sitemap.xml

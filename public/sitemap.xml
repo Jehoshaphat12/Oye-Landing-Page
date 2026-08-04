@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://oye-official.web.app/</loc>
+    <lastmod>2026-04-30</lastmod>
+    <priority>1.0</priority>
+
+    <image:image>
+      <image:loc>
+        https://oye-official.web.app/img2.jpg
+      </image:loc>
+      <image:title>Oye Ride in Kasoa</image:title>
+    </image:image>
+
+    <image:image>
+      <image:loc>
+        https://oye-official.web.app/motor_ride2.jpg
+      </image:loc>
+      <image:title>Oye Motor Ride Service in Kasoa</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>
+        https://oye-official.web.app/motor_delivery.jpg
+      </image:loc>
+      <image:title>Oye Motor Delivery Service in Kasoa</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>
+        https://oye-official.web.app/img3.png
+      </image:loc>
+      <image:title>Download Oye Ride App NOW! | Oye Ride</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>
+        https://oye-official.web.app/bicycle_delivery2.jpg
+      </image:loc>
+      <image:title>Oye Bicycle Delivery Services in Kasoa</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>
+        https://oye-official.web.app/img4.jpg
+      </image:loc>
+      <image:title>Become Oye Rider in Kasoa | Oye Ride</image:title>
+    </image:image>
+  </url>
+</urlset>

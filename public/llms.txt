@@ -1,0 +1,47 @@
+# OyeRide
+
+> Fast motor rides and reliable deliveries in Kasoa, Ghana. Book a ride or send a package in seconds.
+
+OyeRide is a ride-hailing and delivery platform operating in Kasoa, Ghana. It connects passengers and senders with nearby motorcycle and bicycle riders through a mobile app and web platform.
+
+## Services
+
+- **Oye Motor Ride**: On-demand motorcycle taxi service for beating Kasoa traffic. Passengers book a rider, track them live on a map, and pay a transparent upfront fare starting from GHS 10.
+- **Oye Motor Delivery**: Motorcycle-based package delivery for larger items or longer distances across Kasoa. Real-time tracking included.
+- **Oye Bicycle Delivery**: Eco-friendly bicycle delivery for documents, food, and small parcels over short distances. The most affordable option.
+
+## Platforms
+
+- Android app (free download)
+- Web app for passengers: https://oye-ride.web.app/
+- Web app for drivers: https://oye-riders.web.app/
+- Official website: https://oye-official.web.app/
+
+## Key Features
+
+- Real-time GPS tracking of driver from acceptance to destination
+- Surge pricing based on demand, time of day, and location
+- Live driver-to-pickup route shown on passenger map
+- In-app push notifications at every ride stage
+- 10% new user discount on first 2 completed rides
+- In-app chat between passenger and driver
+- Ride history and ratings
+- Multi-stop bookings (up to 3 stops)
+
+## Target Users
+
+- Passengers in Kasoa needing fast, affordable transport
+- Businesses and individuals sending packages across Kasoa
+- Motorcycle and bicycle riders looking to earn income flexibly
+
+## Company
+
+- Founded in Ghana
+- Operating in Kasoa
+- Expanding to more Ghanaian cities
+- Driver signup: https://oye-riders.web.app/signup
+
+## Optional
+
+- Privacy Policy: https://oye-official.web.app/privacy.html
+- Contact: Available through the app and social media
