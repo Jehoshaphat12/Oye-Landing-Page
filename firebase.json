@@ -1,6 +1,7 @@
 {
   "hosting": {
     "target": "oye",
+    "cleanUrls": true,
     "public": "public",
     "ignore": [
       "firebase.json",

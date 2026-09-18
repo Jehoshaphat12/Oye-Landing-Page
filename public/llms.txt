@@ -15,7 +15,7 @@ OyeRide is a ride-hailing and delivery platform operating in Kasoa, Ghana. It co
 - Android app (free download)
 - Web app for passengers: https://oye-ride.web.app/
 - Web app for drivers: https://oye-riders.web.app/
-- Official website: https://oye-official.web.app/
+- Official website: https://oyeridegh.com/
 
 ## Key Features
 
@@ -43,5 +43,5 @@ OyeRide is a ride-hailing and delivery platform operating in Kasoa, Ghana. It co
 
 ## Optional
 
-- Privacy Policy: https://oye-official.web.app/privacy.html
+- Privacy Policy: https://oyeridegh.com/privacy.html
 - Contact: Available through the app and social media

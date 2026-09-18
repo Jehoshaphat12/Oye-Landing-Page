@@ -6,7 +6,7 @@
 
     <!-- Primary SEO -->
     <title>Oye Ride – Fast Motor Rides &amp; Reliable Delivery in Kasoa, Ghana</title>
-    <meta name="description" content="Oye Ride is Kasoa's fastest ride-hailing and delivery service. Book a motor ride, send packages with Oye Delivery, or go eco with Oye Bicycle. Download the app free on Android." />
+    <meta name="description" content="Oye Ride is Kasoa's fastest ride-hailing and delivery service. Book a motor ride, send packages with Oye Delivery, or go eco with Oye Bicycle. Download the app free on Android and iOS." />
     <meta name="keywords" content="oye ride, motor ride Kasoa, oye, oyeride, delivery Kasoa, bicycle delivery ghana, ride hailing ghana, okada Kasoa, package delivery Kasoa" />
     <meta name="author" content="Oye Ride" />
     <link rel="canonical" href="https://oyeridegh.com/" />
@@ -32,7 +32,7 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Oye Ride – Fast Motor Rides &amp; Reliable Delivery in Kasoa" />
-    <meta name="twitter:description" content="Book a motor ride or send packages across Kasoa in minutes. Download the app free." />
+    <meta name="twitter:description" content="Book a motor ride or send packages across Kasoa in minutes. Download the app free on Android and iOS." />
     <meta name="twitter:image" content="https://oyeridegh.com/img2.jpg" />
 
     <!-- Structured Data – valid JSON-LD -->
@@ -61,6 +61,17 @@
             "description": "Fast motor rides and reliable deliveries in Kasoa, Ghana.",
             "url": "https://oyeridegh.com/",
             "downloadUrl": "https://play.google.com/store/apps/details?id=com.jehoshaphat12.oyeride",
+            "offers": { "@type": "Offer", "price": "0", "priceCurrency": "GHS" }
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            "name": "Oye Ride",
+            "operatingSystem": "IOS",
+            "applicationCategory": "TravelApplication",
+            "description": "Fast motor rides and reliable deliveries in Kasoa, Ghana.",
+            "url": "https://oyeridegh.com/",
+            "downloadUrl": "https://apps.apple.com/app/oyeride/id6804677598",
             "offers": { "@type": "Offer", "price": "0", "priceCurrency": "GHS" }
         },
         {
@@ -96,7 +107,7 @@
   "@type": "ImageObject",
   "contentUrl": "https://oyeridegh.com/img3.png",
   "name": "Download Oye Ride App | Oye Ride",
-  "description": "Download the Oye Ride App now and experience fast motor rides and reliable deliveries in Kasoa, Ghana. Available for free on Android."
+  "description": "Download the Oye Ride App now and experience fast motor rides and reliable deliveries in Kasoa, Ghana. Available for free on Android and iOS."
 },
         {
             "@context": "https://schema.org",
@@ -289,6 +300,65 @@
             background: #f8fafc;
         }
 
+        /* App store badges */
+        .store-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+            background: #000;
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            border-radius: 14px;
+            padding: 12px 22px;
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .store-badge:hover {
+            background: #1c1c1e;
+            transform: translateY(-3px);
+            box-shadow: 0 14px 32px rgba(0, 0, 0, 0.35);
+        }
+        .store-badge .store-badge-icon {
+            font-size: 26px;
+            line-height: 1;
+            flex-shrink: 0;
+        }
+        .store-badge .store-badge-copy {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.15;
+            text-align: left;
+        }
+        .store-badge .store-badge-eyebrow {
+            font-size: 10.5px;
+            font-weight: 500;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+            opacity: 0.75;
+        }
+        .store-badge .store-badge-name {
+            font-size: 17px;
+            font-weight: 600;
+            margin-top: 1px;
+        }
+        .store-badge-lg {
+            padding: 16px 28px;
+            gap: 16px;
+            border-radius: 16px;
+        }
+        .store-badge-lg .store-badge-icon {
+            font-size: 32px;
+        }
+        .store-badge-lg .store-badge-name {
+            font-size: 20px;
+        }
+        .store-badge-outline {
+            background: transparent;
+            border: 1.5px solid rgba(255, 255, 255, 0.4);
+        }
+        .store-badge-outline:hover {
+            background: rgba(255, 255, 255, 0.08);
+        }
+
         /* Cards */
         .card-modern {
             /* background: white; */
@@ -473,7 +543,7 @@
                     class="ml-2 px-5 py-2.5 rounded-full font-semibold btn-outline-light text-sm">
                     Drive with Us
                     </a>
-                    <button href="#download"
+                    <a href="#download"
                     class="ml-2 px-6 py-2.5 rounded-full font-semibold btn-primary text-sm">
                     <span>Get the App</span>
                     </a>
@@ -526,24 +596,20 @@
                     Oye Ride connects you with nearby motorcycle riders in seconds. Book a ride, send a package, or deliver eco-friendly — all from one app.
                 </p>
                 <div class="flex flex-wrap gap-4 items-center">
-                    <a href="https://oye-ride.web.app/" target="_blank" rel="noopener"
-                    class="btn-outline-light px-7 py-4 rounded-2xl text-base flex items-center gap-3">
-                    <i class="fa fa-motorcycle text-xl"></i> Book a Ride
+                    <a href="https://play.google.com/store/apps/details?id=com.jehoshaphat12.oyeride" target="_blank" rel="noopener" class="store-badge android-badge" aria-label="Get it on Google Play">
+                        <i class="fa-brands fa-google-play store-badge-icon"></i>
+                        <span class="store-badge-copy">
+                            <span class="store-badge-eyebrow">Get it on</span>
+                            <span class="store-badge-name">Google Play</span>
+                        </span>
                     </a>
-                    <div class="android-only">
-  <button onclick="downloadApp(event)"
-          class="btn-primary px-7 py-4 rounded-2xl text-base flex items-center gap-3 animate-pulse-glow">
-    <span class="flex items-center gap-3">
-      <i class="fa-brands fa-google-play text-xl"></i> Download App
-    </span>
-  </button>
-</div>
-<div class="ios-only" style="display:none;">
-  <a href="#download"
-     class="btn-outline-light px-7 py-4 rounded-2xl text-base flex items-center gap-3">
-    <span><i class="fa-brands fa-apple text-xl"></i> iOS Coming Soon</span>
-  </a>
-</div>
+                    <a href="https://apps.apple.com/app/oyeride/id6804677598" target="_blank" rel="noopener" class="store-badge ios-badge" aria-label="Download on the App Store">
+                        <i class="fa-brands fa-apple store-badge-icon"></i>
+                        <span class="store-badge-copy">
+                            <span class="store-badge-eyebrow">Download on the</span>
+                            <span class="store-badge-name">App Store</span>
+                        </span>
+                    </a>
                 </div>
                 <!-- Social proof -->
                 <div class="flex items-center gap-3 mt-9">
@@ -688,7 +754,7 @@
                 <div class="flex flex-col items-center text-center reveal relative z-10">
                     <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-700 text-white text-xl flex items-center justify-center font-semibold shadow-lg mb-5 ring-4 ring-blue-100">1</div>
                     <h3 class="font-semibold text-gray-800 mb-2 display-font">Download the App</h3>
-                    <p class="text-gray-500 text-sm">Get Oye Ride free on Android from the button below.</p>
+                    <p class="text-gray-500 text-sm">Get Oye Ride free on Android or iOS from the buttons below.</p>
                 </div>
                 <!-- Step 2 -->
                 <div class="flex flex-col items-center text-center reveal relative z-10" style="transition-delay:.1s">
@@ -709,21 +775,21 @@
                     <p class="text-gray-500 text-sm">Confirm your booking and watch your driver arrive live on the map.</p>
                 </div>
             </div>
-            <div class="flex justify-center mt-14 reveal">
-                <div class="android-only">
-  <button onclick="downloadApp(event)"
-          class="btn-primary px-10 py-4 rounded-2xl text-base flex items-center gap-3 shadow-xl">
-    <span class="flex items-center gap-3">
-      <i class="fa-brands fa-google-play text-xl"></i> Start Now – Download Free
-    </span>
-  </button>
-</div>
-<div class="ios-only" style="display:none;">
-  <a href="#download"
-     class="border-2 border-orange-500 text-orange-500 px-10 py-4 rounded-2xl text-base flex items-center gap-3 shadow-xl hover:bg-orange-50 transition-colors">
-    <span><i class="fa-brands fa-apple text-xl"></i> Coming to iOS – Learn More</span>
-  </a>
-</div>
+            <div class="flex flex-wrap justify-center gap-4 mt-14 reveal">
+                <a href="https://play.google.com/store/apps/details?id=com.jehoshaphat12.oyeride" target="_blank" rel="noopener" class="store-badge android-badge" aria-label="Get it on Google Play">
+                    <i class="fa-brands fa-google-play store-badge-icon"></i>
+                    <span class="store-badge-copy">
+                        <span class="store-badge-eyebrow">Get it on</span>
+                        <span class="store-badge-name">Google Play</span>
+                    </span>
+                </a>
+                <a href="https://apps.apple.com/app/oyeride/id6804677598" target="_blank" rel="noopener" class="store-badge ios-badge" aria-label="Download on the App Store">
+                    <i class="fa-brands fa-apple store-badge-icon"></i>
+                    <span class="store-badge-copy">
+                        <span class="store-badge-eyebrow">Download on the</span>
+                        <span class="store-badge-name">App Store</span>
+                    </span>
+                </a>
             </div>
         </div>
     </section>
@@ -940,34 +1006,38 @@
             </span>
             <h2 class="text-3xl md:text-5xl font-semibold mb-6 reveal display-font tracking-tight">Ready to Move Faster?</h2>
             <p class="text-gray-400 text-lg max-w-xl mx-auto mb-12 reveal font-light">
-                Download the Oye Ride app free on Android. Your first 2 rides come with a <strong class="text-orange-400 font-semibold">10% new user discount</strong> — automatically applied.
+                Download the Oye Ride app free on Android and iOS. Your first 2 rides come with a <strong class="text-orange-400 font-semibold">10% new user discount</strong> — automatically applied.
             </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-5 reveal" id="download-actions">
-  <!-- Android download button (visible on Android/desktop) -->
-  <div class="android-only">
-    <button onclick="downloadApp(event)"
-            class="btn-white px-10 py-5 rounded-2xl text-lg flex items-center justify-center gap-4 font-semibold">
-      <i class="fa-brands fa-android text-3xl text-green-500"></i>
-      Download for Android
-    </button>
-  </div>
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-5 reveal" id="download-actions">
+  <a href="https://play.google.com/store/apps/details?id=com.jehoshaphat12.oyeride" target="_blank" rel="noopener"
+     class="store-badge store-badge-lg android-badge" aria-label="Get it on Google Play">
+    <i class="fa-brands fa-google-play store-badge-icon"></i>
+    <span class="store-badge-copy">
+      <span class="store-badge-eyebrow">Get it on</span>
+      <span class="store-badge-name">Google Play</span>
+    </span>
+  </a>
 
-  <!-- iOS placeholder (visible only on iOS) -->
-  <div class="ios-only" style="display:none;">
-    <div class="bg-gray-800 text-white px-10 py-5 rounded-2xl text-lg flex items-center justify-center gap-4 font-semibold opacity-70 cursor-default">
-      <i class="fa-brands fa-apple text-3xl"></i>
-      Coming Soon to iOS
-    </div>
-  </div>
+  <a href="https://apps.apple.com/app/oyeride/id6804677598" target="_blank" rel="noopener"
+     class="store-badge store-badge-lg ios-badge" aria-label="Download on the App Store">
+    <i class="fa-brands fa-apple store-badge-icon"></i>
+    <span class="store-badge-copy">
+      <span class="store-badge-eyebrow">Download on the</span>
+      <span class="store-badge-name">App Store</span>
+    </span>
+  </a>
 
-  <!-- Web App (always visible) -->
+  <!-- Web App -->
   <a href="https://oye-ride.web.app/" target="_blank" rel="noopener"
-     class="border-2 border-white/25 text-white px-10 py-5 rounded-2xl text-lg flex items-center justify-center gap-4 font-semibold hover:bg-white/10 hover:border-white/40 transition-all duration-300">
-    <i class="fa-solid fa-globe text-xl"></i>
-    Open Web App
+     class="store-badge store-badge-lg store-badge-outline">
+    <i class="fa-solid fa-globe store-badge-icon"></i>
+    <span class="store-badge-copy">
+      <span class="store-badge-eyebrow">Prefer the browser?</span>
+      <span class="store-badge-name">Open Web App</span>
+    </span>
   </a>
 </div>
-            <p class="text-gray-600 text-sm mt-9 reveal">iOS coming soon &nbsp;·&nbsp; No credit card required &nbsp;·&nbsp; Available in Kasoa, Ghana</p>
+            <p class="text-gray-600 text-sm mt-9 reveal">Available on Android &amp; iOS &nbsp;·&nbsp; No credit card required &nbsp;·&nbsp; Available in Kasoa, Ghana</p>
         </div>
     </section>
 
@@ -1010,6 +1080,7 @@
                         <li><a href="delete-account.html" class="hover:text-blue-600 transition-colors">Delete Account</a></li>
                         <li><a href="privacy.html" class="hover:text-blue-600 transition-colors">Privacy Policy</a></li>
                         <li><a href="support.html" class="hover:text-blue-600 transition-colors">Support & Help Center</a></li>
+                        <li><a href="contact.html" class="hover:text-blue-600 transition-colors">Contact Us</a></li>
                     </ul>
                 </div>
             </div>
@@ -1057,7 +1128,7 @@
         // FAQ accordion
         const faqs = [
             { q: "How do I book a ride with Oye Ride in Kasoa?",
-                a: "Download the Oye Ride app for Android, enter your pickup location and destination, choose your service (Motor Ride, Motor Delivery, or Bicycle Delivery), see the price upfront, and confirm. A nearby rider will accept your request within seconds." },
+                a: "Download the Oye Ride app for Android or iOS, enter your pickup location and destination, choose your service (Motor Ride, Motor Delivery, or Bicycle Delivery), see the price upfront, and confirm. A nearby rider will accept your request within seconds." },
             { q: "How much does a motor ride cost?",
                 a: "Fares start from GHS 10 depending on your distance and current demand. You always see the exact price before confirming — no hidden charges, ever." },
             { q: "Can I track my driver in real time?",
@@ -1098,45 +1169,27 @@
         // Re-observe FAQ items
         document.querySelectorAll('#faq-list .reveal').forEach(el => observer.observe(el));
 
-        // Download app
-        function downloadApp(e) {
-            const btn = e.currentTarget;
-            const orig = btn.innerHTML;
-            btn.innerHTML =
-                '<span class="flex items-center gap-2"><i class="fa-solid fa-spinner fa-spin"></i> Starting Download…</span>';
-            btn.disabled = true;
-            btn.style.opacity = '0.75';
-            setTimeout(() => {
-                window.location.href =
-                    'https://play.google.com/store/apps/details?id=com.jehoshaphat12.oyeride';
-                btn.innerHTML = orig;
-                btn.disabled = false;
-                btn.style.opacity = '1';
-            }, 1500);
-        }
-
+        // Detect device type and show only the relevant store badge on phones;
+        // show both on desktop / tablets / anything else.
         (function () {
-    var ua = navigator.userAgent;
-    var isAndroid = /android/i.test(ua);
-    var isIOS = /iPad|iPhone|iPod/.test(ua) ||
-                (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+            var ua = navigator.userAgent;
+            var isAndroid = /android/i.test(ua);
+            var isIOS = /iPhone|iPod/.test(ua) ||
+                        (/iPad/.test(ua)) ||
+                        (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 
-    // Add a class so CSS can react (optional)
-    document.body.classList.add(isIOS ? 'ios' : isAndroid ? 'android' : 'desktop');
+            document.body.classList.add(isIOS ? 'ios' : isAndroid ? 'android' : 'desktop');
 
-    // Show / hide the appropriate elements
-    var androidEls = document.querySelectorAll('.android-only');
-    var iosEls = document.querySelectorAll('.ios-only');
+            var androidBadges = document.querySelectorAll('.android-badge');
+            var iosBadges = document.querySelectorAll('.ios-badge');
 
-    if (isIOS) {
-        androidEls.forEach(function(el) { el.style.display = 'none'; });
-        iosEls.forEach(function(el) { el.style.display = ''; });   // reset inline "display:none"
-    } else {
-        // On Android, desktop, etc. – hide iOS, show Android
-        iosEls.forEach(function(el) { el.style.display = 'none'; });
-        androidEls.forEach(function(el) { el.style.display = ''; });
-    }
-})();
+            if (isIOS) {
+                androidBadges.forEach(function (el) { el.style.display = 'none'; });
+            } else if (isAndroid) {
+                iosBadges.forEach(function (el) { el.style.display = 'none'; });
+            }
+            // Desktop/other: leave both visible
+        })();
     </script>
 </body>
 </html>
